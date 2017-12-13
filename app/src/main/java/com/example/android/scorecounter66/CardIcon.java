@@ -5,4 +5,6 @@ package com.example.android.scorecounter66;
  */
 
 public class CardIcon {
+    public Player owner;
+    public CardType cardType;
 }

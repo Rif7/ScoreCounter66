@@ -1,5 +1,21 @@
 <resources>
     <string name="app_name">Score Counter 66</string>
+    <!-- Displays -->
     <string name="me">Me</string>
     <string name="you">You</string>
+    <string name="initNumber">0</string>
+    <string name="_120">120</string>
+    <string name="reset">reset</string>
+    <string name="remaing_points">Remaing points:</string>
+    <string name="undo">undo</string>
+
+    <!--Players -->
+    <integer name="playersNumber">2</integer>
+    <string name="Player1">Player1</string>
+    <string name="Player2">Player2</string>
+    <string name="meld_20">Meld +20</string>
+
+    <!--Player Cards -->
+
+
 </resources>

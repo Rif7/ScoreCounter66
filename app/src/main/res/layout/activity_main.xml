@@ -30,13 +30,13 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/myScore"
+                android:id="@+id/score_Player1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:text="0"
+                android:text="@string/initNumber"
                 android:textColor="@android:color/black"
                 android:textSize="56sp" />
 
@@ -45,17 +45,20 @@
                 android:layout_height="60dp">
 
                 <ImageView
+                    android:id="@+id/ace_Player1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/ace_of_clubs_me"
-                    android:src="@drawable/ace_of_clubs_white"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:onClick="clickAcePlayer1"
+                    android:src="@drawable/ace_of_clubs_white" />
 
                 <ImageView
+                    android:id="@+id/teen_Player1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/teen_of_clubs_white"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:onClick="clickTeenPlayer1"
+                    android:src="@drawable/teen_of_clubs_white" />
 
             </LinearLayout>
 
@@ -64,16 +67,20 @@
                 android:layout_height="60dp">
 
                 <ImageView
+                    android:id="@+id/king_Player1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/king_of_clubs_white"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:onClick="clickKingPlayer1"
+                    android:src="@drawable/king_of_clubs_white" />
 
                 <ImageView
+                    android:id="@+id/queen_Player1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/queen_of_clubs_white"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:onClick="clickQueenPlayer1"
+                    android:src="@drawable/queen_of_clubs_white" />
 
             </LinearLayout>
 
@@ -82,24 +89,30 @@
                 android:layout_height="60dp">
 
                 <ImageView
+                    android:id="@+id/jack_Player1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/jack_of_clubs_white"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:onClick="clickJackPlayer1"
+                    android:src="@drawable/jack_of_clubs_white" />
 
                 <ImageView
+                    android:id="@+id/nine_Player1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/nine_of_clubs_white"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:onClick="clickNinePlayer1"
+                    android:src="@drawable/nine_of_clubs_white" />
 
             </LinearLayout>
 
             <Button
+                android:id="@+id/meld_Player1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Meld +20"/>
+                android:onClick="clickMeldPlayer1"
+                android:text="@string/meld_20" />
 
         </LinearLayout>
 
@@ -126,13 +139,13 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/enemyScore"
+                android:id="@+id/score_Player2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:text="0"
+                android:text="@string/initNumber"
                 android:textColor="@android:color/black"
                 android:textSize="56sp" />
 
@@ -141,16 +154,20 @@
                 android:layout_height="60dp">
 
                 <ImageView
+                    android:id="@+id/ace_Player2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ace_of_clubs_white"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:onClick="clickAcePlayer2"
+                    android:src="@drawable/ace_of_clubs_white" />
 
                 <ImageView
+                    android:id="@+id/teen_Player2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/teen_of_clubs_white"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:onClick="clickTeenPlayer2"
+                    android:src="@drawable/teen_of_clubs_white" />
 
             </LinearLayout>
 
@@ -159,16 +176,20 @@
                 android:layout_height="60dp">
 
                 <ImageView
+                    android:id="@+id/king_Player2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/king_of_clubs_white"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:onClick="clickKingPlayer2"
+                    android:src="@drawable/king_of_clubs_white" />
 
                 <ImageView
+                    android:id="@+id/queen_Player2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/queen_of_clubs_white"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:onClick="clickQueenPlayer2"
+                    android:src="@drawable/queen_of_clubs_white" />
 
             </LinearLayout>
 
@@ -177,24 +198,30 @@
                 android:layout_height="60dp">
 
                 <ImageView
+                    android:id="@+id/jack_Player2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/jack_of_clubs_white"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:onClick="clickJackPlayer2"
+                    android:src="@drawable/jack_of_clubs_white" />
 
                 <ImageView
+                    android:id="@+id/nine_Player2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/nine_of_clubs_white"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:onClick="clickNinePlayer2"
+                    android:src="@drawable/nine_of_clubs_white" />
+
             </LinearLayout>
 
             <Button
+                android:id="@+id/meld_Player2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Meld +20"/>
-
+                android:onClick="clickMeldPlayer2"
+                android:text="Meld +20" />
 
         </LinearLayout>
     </LinearLayout>
@@ -204,29 +231,39 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_margin="16dp"
-        android:text="reset"
-        android:textAllCaps="true"
-        android:layout_alignParentStart="true" />
+        android:text="@string/reset"
+        android:onClick="reset"
+        android:textAllCaps="true" />
 
     <TextView
+        android:id="@+id/remaining_points"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Remaing points: \n 120"
-        android:textAlignment="center"
-        android:layout_margin="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:text="@string/_120"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/remaining_points"
+        android:layout_centerHorizontal="true"
+        android:text="@string/remaing_points"
+        android:textAlignment="center" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_margin="16dp"
-        android:text="undo"
-        android:textAllCaps="true"
-        android:layout_alignParentEnd="true" />
+        android:text="@string/undo"
+        android:textAllCaps="true" />
 
 </RelativeLayout>
 
