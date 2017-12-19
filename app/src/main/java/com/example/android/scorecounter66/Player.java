@@ -1,53 +1,63 @@
 package com.example.android.scorecounter66;
 
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 /**
  * Created by Rif-ACER on 05.12.2017.
  */
 
 public class Player {
     private static boolean onePlayerClicked = false;
-    private boolean OneCardChosen;
+    private final String playerName;
+    private boolean oneCardChosen;
     private int score;
     private int chosenCardPoints;
-    private String playerName;
+    private CardType chosenCard;
 
     Player(String playerName) {
-        this.OneCardChosen = false;
+        resetOneCardChosen();
         this.playerName = playerName;
         resetScore();
-    }
-
-    public void resetTempPoints() {
-        this.chosenCardPoints = 0;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public String getStringScore() {
-        return Integer.toString(score);
-    }
-
-    public int chosenCardPoints() {
-        return chosenCardPoints;
-    }
-
-    public void resetScore() {
-        this.chosenCardPoints = 0;
-        this.score = 0;
     }
 
     public static void resetOnePlayerClicked() {
         onePlayerClicked = false;
     }
 
-    public String getPlayerName() {
-        return playerName;
+    public static boolean isOnePlayerClicked() {
+        return onePlayerClicked;
+    }
+
+    private void resetTempPoints() {
+        this.chosenCardPoints = 0;
+    }
+
+    boolean isOneCardChosen() {
+        return oneCardChosen;
+    }
+
+    public CardType getChosenCard() {
+        return chosenCard;
+    }
+
+    public String getStringScore() {
+        return Integer.toString(score);
+    }
+
+    public void resetOneCardChosen() {
+        chosenCard = null;
+        oneCardChosen = false;
+        resetTempPoints();
+        resetOnePlayerClicked();
+    }
+
+    public void resetScore() {
+        resetOneCardChosen();
+        score = 0;
+    }
+
+    public boolean addMeld() {
+        int meldPoints = CardTypes.getInstance().takeMeld();
+        score += meldPoints;
+        return meldPoints > 0;
     }
 
     public String getPlayerScoreViewName() {
@@ -55,27 +65,27 @@ public class Player {
     }
 
     public String getPlayerCardViewName(CardType cardType) {
-        String PlayerCardViewName = CardTypes.getInstance().getCardName(cardType) + "_" + playerName;
-        return PlayerCardViewName;
-    }
-
-    public static boolean isOnePlayerClicked() {
-        return onePlayerClicked;
+        return CardTypes.getInstance().getCardName(cardType) + "_" + playerName;
     }
 
     public boolean addCard(CardType cardType) {
-        if (onePlayerClicked && !OneCardChosen) {
+        if (onePlayerClicked && !oneCardChosen) {
             return false; // Fail
         }
-        if (!OneCardChosen) {
-            chosenCardPoints += CardTypes.getInstance().getPointsCard(cardType);
-            this.OneCardChosen = true;
+        int points = CardTypes.getInstance().takePointsCard(cardType);
+        if (points == CardTypes.INVALID_CARD) {
+            return false;   // No card left
         } else {
             chosenCardPoints += CardTypes.getInstance().getPointsCard(cardType);
-            score += chosenCardPoints;
-            chosenCardPoints = 0;
-            this.OneCardChosen = false;
+            if (!oneCardChosen) {
+                chosenCard = cardType;
+                oneCardChosen = true;
+                onePlayerClicked = true;
+            } else {
+                score += chosenCardPoints;
+                resetOneCardChosen();
+            }
+            return true;
         }
-        return CardTypes.getInstance().takePointsCard(cardType) >= 0;
     }
 }

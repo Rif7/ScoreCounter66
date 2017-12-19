@@ -1,8 +1,8 @@
 package com.example.android.scorecounter66;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,46 +24,64 @@ public class MainActivity extends AppCompatActivity {
         player2 = new Player(getResources().getString(R.string.Player2));
     }
 
-    public void resetScorePlayer1() {
-        int scoreResId = getResources().getIdentifier(player1.getPlayerScoreViewName(), "id", getPackageName());
-        player1.resetScore();
+    public void resetScorePlayer(Player player) {
+        int scoreResId = getResources().getIdentifier(player.getPlayerScoreViewName(), "id", getPackageName());
+        player.resetScore();
         TextView scoreTextView = (TextView) findViewById(scoreResId);
-        scoreTextView.setText(player1.getStringScore());
+        scoreTextView.setText(player.getStringScore());
     }
 
-    public void resetScorePlayer2() {
-        int scoreResId = getResources().getIdentifier(player1.getPlayerScoreViewName(), "id", getPackageName());
-        player2.resetScore();
-        TextView scoreTextView = (TextView) findViewById(scoreResId);
-        scoreTextView.setText(player2.getStringScore());
-    }
 
     public void reset(View view) {
-        resetScorePlayer1();
-        resetScorePlayer2();
+        resetScorePlayer(player1);
+        resetScorePlayer(player2);
         Player.resetOnePlayerClicked();
         CardTypes.getInstance().resetCards();
-        resetLayout();
+        resetLayout(player1);
+        resetLayout(player2);
+        updateRemainingPoints("0");
     }
 
-    public void resetLayout() {
-        Player player = player1;
-        CardType cardType = CardType.ACE;
+    public void resetLayout(Player player) {
+        for (CardType cardType : CardType.values()) {
+            int cardResId = getResources().getIdentifier(player.getPlayerCardViewName(cardType), "id", getPackageName());
+            ImageView cardImageView = (ImageView) findViewById(cardResId);
+            Context context = cardImageView.getContext();
+            String cardPicName = CardTypes.getInstance().getCardName(cardType) + "_of_clubs_white";
+            int whiteCardPicId = context.getResources().getIdentifier(cardPicName, "drawable", context.getPackageName());
+            cardImageView.setImageResource(whiteCardPicId);
+            updateRemainingPoints(CardTypes.getInstance().getStringLeftPoints());
+        }
+    }
+
+    public void updateRemainingPoints(String remainingPoints) {
+        TextView quantityTextView = (TextView) findViewById(R.id.remaining_points);
+        quantityTextView.setText(remainingPoints);
+    }
+
+    public void addMeldPoints(Player player) {
+        boolean addMeldSuccess = player.addMeld();
+        if (addMeldSuccess) {
+            int scoreResId = getResources().getIdentifier(player.getPlayerScoreViewName(), "id", getPackageName());
+            TextView scoreTextView = (TextView) findViewById(scoreResId);
+            scoreTextView.setText(player.getStringScore());
+        } // TO do disable buttons
     }
 
     public void changeCardLayout(Player player, CardType cardType) {
         int cardResId = getResources().getIdentifier(player.getPlayerCardViewName(cardType), "id", getPackageName());
         ImageView cardImageView = (ImageView) findViewById(cardResId);
         Context context = cardImageView.getContext();
-        if (player.chosenCardPoints() != 0) {
-            int blackCardPicId = context.getResources().getIdentifier("ace_of_clubs_black", "drawable", context.getPackageName());
+        if (player.isOneCardChosen()) {
+            String cardPicName = CardTypes.getInstance().getCardName(cardType) + "_of_clubs_black";
+            int blackCardPicId = context.getResources().getIdentifier(cardPicName, "drawable", context.getPackageName());
             cardImageView.setImageResource(blackCardPicId);
         } else {
-            int whiteCardPicId = context.getResources().getIdentifier("ace_of_clubs_white", "drawable", context.getPackageName());
-            cardImageView.setImageResource(whiteCardPicId);
+            resetLayout(player);
             int scoreResId = getResources().getIdentifier(player.getPlayerScoreViewName(), "id", getPackageName());
             TextView scoreTextView = (TextView) findViewById(scoreResId);
             scoreTextView.setText(player.getStringScore());
+            ;
         }
     }
 
@@ -71,8 +89,8 @@ public class MainActivity extends AppCompatActivity {
         Player player = player1;
         CardType cardType = CardType.ACE;
 
-        boolean addCardSucces = player.addCard(cardType);
-        if (addCardSucces) {
+        boolean addCardSuccess = player.addCard(cardType);
+        if (addCardSuccess) {
             changeCardLayout(player, cardType);
         }
     }
@@ -81,53 +99,139 @@ public class MainActivity extends AppCompatActivity {
         Player player = player1;
         CardType cardType = CardType.TEEN;
 
-        boolean addCardSucces = player.addCard(cardType);
-        if (addCardSucces) {
-            int cardResId = getResources().getIdentifier(player.getPlayerCardViewName(cardType), "id", getPackageName());
-            ImageView cardImageView = (ImageView) findViewById(cardResId);
-            if (player.chosenCardPoints() != 0) {
-                cardImageView.setImageResource(R.drawable.teen_of_clubs_black);
-            } else {
-                cardImageView.setImageResource(R.drawable.teen_of_clubs_white);
-                int scoreResId = getResources().getIdentifier(player.getPlayerScoreViewName(), "id", getPackageName());
-                TextView scoreTextView = (TextView) findViewById(scoreResId);
-                scoreTextView.setText(player.getStringScore());
-            }
+        boolean addCardSuccess = player.addCard(cardType);
+        if (addCardSuccess) {
+            changeCardLayout(player, cardType);
         }
     }
 
     public void clickKingPlayer1(View view) {
+        Player player = player1;
+        CardType cardType = CardType.KING;
+
+        boolean addCardSuccess = player.addCard(cardType);
+        if (addCardSuccess) {
+            changeCardLayout(player, cardType);
+        }
     }
 
     public void clickQueenPlayer1(View view) {
+        Player player = player1;
+        CardType cardType = CardType.QUEEN;
+
+        boolean addCardSuccess = player.addCard(cardType);
+        if (addCardSuccess) {
+            changeCardLayout(player, cardType);
+        }
     }
 
     public void clickJackPlayer1(View view) {
+        Player player = player1;
+        CardType cardType = CardType.JACK;
+
+        boolean addCardSuccess = player.addCard(cardType);
+        if (addCardSuccess) {
+            changeCardLayout(player, cardType);
+        }
     }
 
     public void clickNinePlayer1(View view) {
+        Player player = player1;
+        CardType cardType = CardType.NINE;
+
+        boolean addCardSuccess = player.addCard(cardType);
+        if (addCardSuccess) {
+            changeCardLayout(player, cardType);
+        }
     }
 
     public void clickMeldPlayer1(View view) {
+        Player player = player1;
+
+        addMeldPoints(player);
     }
 
-    public void clickAcePlayer2(View view) {}
 
-    public void clickTeenPlayer2(View view) {}
+    public void clickAcePlayer2(View view) {
+        Player player = player2;
+        CardType cardType = CardType.ACE;
+
+        boolean addCardSuccess = player.addCard(cardType);
+        if (addCardSuccess) {
+            changeCardLayout(player, cardType);
+        }
+    }
+
+    public void clickTeenPlayer2(View view) {
+        Player player = player2;
+        CardType cardType = CardType.TEEN;
+
+        boolean addCardSuccess = player.addCard(cardType);
+        if (addCardSuccess) {
+            changeCardLayout(player, cardType);
+        }
+    }
 
     public void clickKingPlayer2(View view) {
+        Player player = player2;
+        CardType cardType = CardType.KING;
+
+        boolean addCardSuccess = player.addCard(cardType);
+        if (addCardSuccess) {
+            changeCardLayout(player, cardType);
+        }
     }
 
     public void clickQueenPlayer2(View view) {
+        Player player = player2;
+        CardType cardType = CardType.QUEEN;
+
+        boolean addCardSuccess = player.addCard(cardType);
+        if (addCardSuccess) {
+            changeCardLayout(player, cardType);
+        }
     }
 
     public void clickJackPlayer2(View view) {
+        Player player = player2;
+        CardType cardType = CardType.JACK;
+
+        boolean addCardSuccess = player.addCard(cardType);
+        if (addCardSuccess) {
+            changeCardLayout(player, cardType);
+        }
     }
 
     public void clickNinePlayer2(View view) {
+        Player player = player2;
+        CardType cardType = CardType.NINE;
+
+        boolean addCardSuccess = player.addCard(cardType);
+        if (addCardSuccess) {
+            changeCardLayout(player, cardType);
+        }
     }
 
     public void clickMeldPlayer2(View view) {
+        Player player = player2;
+
+        addMeldPoints(player);
+    }
+
+    public void undo(View view) {
+        if (Player.isOnePlayerClicked()) {
+            Player player;
+            if (player1.isOneCardChosen()) {
+                player = player1;
+            } else {
+                player = player2;
+            }
+            if (player.isOneCardChosen()) {
+                CardTypes.getInstance().returnCardToPile(player.getChosenCard());
+                player.resetOneCardChosen();
+                resetLayout(player);
+            }
+        }
     }
 
 }
