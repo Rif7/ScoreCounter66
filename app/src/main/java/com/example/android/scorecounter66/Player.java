@@ -1,10 +1,7 @@
 package com.example.android.scorecounter66;
 
-/**
- * Created by Rif-ACER on 05.12.2017.
- */
 
-public class Player {
+class Player {
     private static boolean onePlayerClicked = false;
     private final String playerName;
     private boolean oneCardChosen;
@@ -18,11 +15,11 @@ public class Player {
         resetScore();
     }
 
-    public static void resetOnePlayerClicked() {
+    static void resetOnePlayerClicked() {
         onePlayerClicked = false;
     }
 
-    public static boolean isOnePlayerClicked() {
+    static boolean isOnePlayerClicked() {
         return onePlayerClicked;
     }
 
@@ -34,49 +31,49 @@ public class Player {
         return oneCardChosen;
     }
 
-    public CardType getChosenCard() {
+    CardType getChosenCard() {
         return chosenCard;
     }
 
-    public String getStringScore() {
+    String getStringScore() {
         return Integer.toString(score);
     }
 
-    public void resetOneCardChosen() {
+    void resetOneCardChosen() {
         chosenCard = null;
         oneCardChosen = false;
         resetTempPoints();
         resetOnePlayerClicked();
     }
 
-    public void resetScore() {
+    void resetScore() {
         resetOneCardChosen();
         score = 0;
     }
 
-    public boolean addMeld() {
-        int meldPoints = CardTypes.getInstance().takeMeld();
+    boolean addMeld() {
+        int meldPoints = Pile.getInstance().takeMeld();
         score += meldPoints;
         return meldPoints > 0;
     }
 
-    public String getPlayerScoreViewName() {
+    String getPlayerScoreViewName() {
         return "score_" + playerName;
     }
 
-    public String getPlayerCardViewName(CardType cardType) {
-        return CardTypes.getInstance().getCardName(cardType) + "_" + playerName;
+    String getPlayerCardViewName(CardType cardType) {
+        return Pile.getInstance().getCardName(cardType) + "_" + playerName;
     }
 
-    public boolean addCard(CardType cardType) {
+    boolean addCard(CardType cardType) {
         if (onePlayerClicked && !oneCardChosen) {
             return false; // Fail
         }
-        int points = CardTypes.getInstance().takePointsCard(cardType);
-        if (points == CardTypes.INVALID_CARD) {
+        int points = Pile.getInstance().takePointsCard(cardType);
+        if (points == Pile.INVALID_CARD) {
             return false;   // No card left
         } else {
-            chosenCardPoints += CardTypes.getInstance().getPointsCard(cardType);
+            chosenCardPoints += Pile.getInstance().getPointsCard(cardType);
             if (!oneCardChosen) {
                 chosenCard = cardType;
                 oneCardChosen = true;

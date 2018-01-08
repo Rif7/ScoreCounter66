@@ -4,15 +4,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
 
 public class ExampleUnitTest {
     private void resetCardTypes() {
-        CardTypes.getInstance().resetCards();
+        Pile.getInstance().resetCards();
     }
 
     private Player[] createPlayers() {
@@ -43,11 +38,11 @@ public class ExampleUnitTest {
         giveCardsForPlayers(players[0], 1, players[1], 0);
         assertEquals("30", players[0].getStringScore());
         assertEquals("0", players[1].getStringScore());
-        assertEquals("90", CardTypes.getInstance().getStringLeftPoints());
+        assertEquals("90", Pile.getInstance().getStringLeftPoints());
         giveCardsForPlayers(players[0], 0, players[1], 1);
         assertEquals("30", players[0].getStringScore());
         assertEquals("30", players[1].getStringScore());
-        assertEquals("60", CardTypes.getInstance().getStringLeftPoints());
+        assertEquals("60", Pile.getInstance().getStringLeftPoints());
     }
 
     // Cannot both players have more than 120 points from cards
@@ -57,7 +52,7 @@ public class ExampleUnitTest {
         giveCardsForPlayers(players[0], 5, players[1], 1);
         assertEquals("120", players[0].getStringScore());
         assertEquals("0", players[1].getStringScore());
-        assertEquals("0", CardTypes.getInstance().getStringLeftPoints());
+        assertEquals("0", Pile.getInstance().getStringLeftPoints());
     }
 
     // When one player clicked on card clicking another card has no result
@@ -67,12 +62,12 @@ public class ExampleUnitTest {
         players[0].addCard(CardType.ACE);
         giveCardsForPlayers(players[0], 0, players[1], 1);
         assertEquals("0", players[1].getStringScore());
-        assertEquals("109", CardTypes.getInstance().getStringLeftPoints());
+        assertEquals("109", Pile.getInstance().getStringLeftPoints());
         players[0].addCard(CardType.ACE);
         giveCardsForPlayers(players[0], 0, players[1], 1);
         assertEquals("22", players[0].getStringScore());
         assertEquals("30", players[1].getStringScore());
-        assertEquals("68", CardTypes.getInstance().getStringLeftPoints());
+        assertEquals("68", Pile.getInstance().getStringLeftPoints());
 
     }
 
@@ -86,7 +81,7 @@ public class ExampleUnitTest {
         players[1].addCard(CardType.JACK);
         assertEquals("8", players[0].getStringScore());
         assertEquals("0", players[1].getStringScore());
-        assertEquals("112", CardTypes.getInstance().getStringLeftPoints());
+        assertEquals("112", Pile.getInstance().getStringLeftPoints());
     }
 
     // After reset all cards are available
@@ -96,16 +91,16 @@ public class ExampleUnitTest {
         giveCardsForPlayers(players[0], 1, players[1], 1);
         assertEquals("30", players[0].getStringScore());
         assertEquals("30", players[1].getStringScore());
-        assertEquals("60", CardTypes.getInstance().getStringLeftPoints());
+        assertEquals("60", Pile.getInstance().getStringLeftPoints());
         players[0].resetScore();
         assertEquals("0", players[0].getStringScore());
         players[1].resetScore();
         assertEquals("0", players[1].getStringScore());
-        CardTypes.getInstance().resetCards();
-        assertEquals("120", CardTypes.getInstance().getStringLeftPoints());
+        Pile.getInstance().resetCards();
+        assertEquals("120", Pile.getInstance().getStringLeftPoints());
         giveCardsForPlayers(players[0], 0, players[1], 5);
         assertEquals("120", players[1].getStringScore());
-        assertEquals("0", CardTypes.getInstance().getStringLeftPoints());
+        assertEquals("0", Pile.getInstance().getStringLeftPoints());
     }
 
     // Reset is possible when one card is clicked
@@ -114,16 +109,16 @@ public class ExampleUnitTest {
         Player[] players = createPlayers();
         players[0].addCard(CardType.QUEEN);
         assertEquals("0", players[1].getStringScore());
-        assertEquals("117", CardTypes.getInstance().getStringLeftPoints());
+        assertEquals("117", Pile.getInstance().getStringLeftPoints());
         players[0].resetScore();
         assertEquals("0", players[0].getStringScore());
-        CardTypes.getInstance().resetCards();
-        assertEquals("120", CardTypes.getInstance().getStringLeftPoints());
+        Pile.getInstance().resetCards();
+        assertEquals("120", Pile.getInstance().getStringLeftPoints());
         for (int i = 0; i < 5; i++) {
             players[0].addCard(CardType.QUEEN);
         }
         assertEquals("12", players[0].getStringScore());
-        assertEquals("108", CardTypes.getInstance().getStringLeftPoints());
+        assertEquals("108", Pile.getInstance().getStringLeftPoints());
     }
 
     // return to pile
@@ -131,13 +126,13 @@ public class ExampleUnitTest {
     public void returnCardToPile() throws Exception {
         Player[] players = createPlayers();
         players[0].addCard(CardType.KING);
-        CardTypes.getInstance().returnCardToPile(CardType.KING);
-        assertEquals("120", CardTypes.getInstance().getStringLeftPoints());
+        Pile.getInstance().returnCardToPile(CardType.KING);
+        assertEquals("120", Pile.getInstance().getStringLeftPoints());
         players[0].resetScore();
         for (int i = 0; i < 5; i++) {
             players[0].addCard(CardType.KING);
         }
         assertEquals("16", players[0].getStringScore());
-        assertEquals("104", CardTypes.getInstance().getStringLeftPoints());
+        assertEquals("104", Pile.getInstance().getStringLeftPoints());
     }
 }

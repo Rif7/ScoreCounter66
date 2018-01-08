@@ -1,52 +1,43 @@
 package com.example.android.scorecounter66;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
-/**
- * Created by Rif-ACER on 09.12.2017.
- */
-
-public class CardTypes {
-    public static final int INVALID_CARD = -1;
-    public static final int MELD_POINTS = 20;
-    private static final CardTypes ourInstance = new CardTypes();
-    private ArrayList<Card> cards;
+class Pile {
+    static final int INVALID_CARD = -1;
+    private static final int MELD_POINTS = 20;
+    private static final Pile ourInstance = new Pile();
+    private HashMap<CardType, Card> cards;
     private int leftMelds;
     private int leftPoints;
 
-    private CardTypes() {
-        cards = new ArrayList<>();
-        cards.add(new AceCard());
-        cards.add(new TeenCard());
-        cards.add(new KingCard());
-        cards.add(new QueenCard());
-        cards.add(new JackCard());
-        cards.add(new NineCard());
+    private Pile() {
+        cards = new HashMap<>(6);
+        cards.put(CardType.ACE, new AceCard());
+        cards.put(CardType.TEEN, new TeenCard());
+        cards.put(CardType.KING, new KingCard());
+        cards.put(CardType.QUEEN, new QueenCard());
+        cards.put(CardType.JACK, new JackCard());
+        cards.put(CardType.NINE, new NineCard());
         resetCards();
     }
 
-    static CardTypes getInstance() {
+    static Pile getInstance() {
         return ourInstance;
     }
 
-    public String getStringLeftPoints() {
+    String getStringLeftPoints() {
         return Integer.toString(leftPoints);
     }
 
     private Card getCard(CardType cardTypeToFind) {
-        for(Card card : cards) {
-            if (card.getCardType() == cardTypeToFind) {
-                return card;
-            }
-        }
-        return null;
+        return cards.get(cardTypeToFind);
     }
 
     private boolean isMeldLeft() {
         return leftMelds > 0;
     }
 
-    public int takeMeld() {
+    int takeMeld() {
         if (isMeldLeft()) {
             leftMelds--;
             return MELD_POINTS;
@@ -54,18 +45,9 @@ public class CardTypes {
         return 0;
     }
 
-
     String getCardName(CardType cardType) {
         Card card = getCard(cardType);
         return card.getName();
-    }
-
-    ArrayList<String> getCardNamesList() {
-        ArrayList<String> cardsNames = new ArrayList<>();
-        for (Card card : cards) {
-            cardsNames.add(card.getName());
-        }
-        return cardsNames;
     }
 
     void returnCardToPile(CardType cardType) {
@@ -99,7 +81,7 @@ public class CardTypes {
     }
 
     void resetCards() {
-        for(Card card : cards) {
+        for (Card card : cards.values()) {
             card.reset();
         }
         leftPoints = 120;
@@ -111,13 +93,11 @@ abstract class Card{
     private static final int NUBER_CARDS_SAME_TYPE = 4;
     private int leftCards;
     private int points;
-    private CardType cardType;
     private String name;
 
     Card(int points, CardType cardType) {
         this.leftCards = NUBER_CARDS_SAME_TYPE;
         this.points = points;
-        this.cardType = cardType;
         this.name = getCardTypeName(cardType);
     }
 
@@ -147,10 +127,6 @@ abstract class Card{
         return this.points;
     }
 
-    CardType getCardType() {
-        return cardType;
-    }
-
     void takeCardFromPile() {
         leftCards--;
     }
@@ -163,7 +139,7 @@ abstract class Card{
         return leftCards > 0;
     }
 
-    public void reset() {
+    void reset() {
         this.leftCards = NUBER_CARDS_SAME_TYPE;
     }
 

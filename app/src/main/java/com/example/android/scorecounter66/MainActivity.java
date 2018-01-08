@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     public void resetScorePlayer(Player player) {
         int scoreResId = getResources().getIdentifier(player.getPlayerScoreViewName(), "id", getPackageName());
         player.resetScore();
-        TextView scoreTextView = (TextView) findViewById(scoreResId);
+        TextView scoreTextView = findViewById(scoreResId);
         scoreTextView.setText(player.getStringScore());
     }
 
@@ -36,26 +36,26 @@ public class MainActivity extends AppCompatActivity {
         resetScorePlayer(player1);
         resetScorePlayer(player2);
         Player.resetOnePlayerClicked();
-        CardTypes.getInstance().resetCards();
+        Pile.getInstance().resetCards();
         resetLayout(player1);
         resetLayout(player2);
-        updateRemainingPoints("0");
+        updateRemainingPoints("120");
     }
 
     public void resetLayout(Player player) {
         for (CardType cardType : CardType.values()) {
             int cardResId = getResources().getIdentifier(player.getPlayerCardViewName(cardType), "id", getPackageName());
-            ImageView cardImageView = (ImageView) findViewById(cardResId);
+            ImageView cardImageView = findViewById(cardResId);
             Context context = cardImageView.getContext();
-            String cardPicName = CardTypes.getInstance().getCardName(cardType) + "_of_clubs_white";
+            String cardPicName = Pile.getInstance().getCardName(cardType) + "_of_clubs_white";
             int whiteCardPicId = context.getResources().getIdentifier(cardPicName, "drawable", context.getPackageName());
             cardImageView.setImageResource(whiteCardPicId);
-            updateRemainingPoints(CardTypes.getInstance().getStringLeftPoints());
+            updateRemainingPoints(Pile.getInstance().getStringLeftPoints());
         }
     }
 
     public void updateRemainingPoints(String remainingPoints) {
-        TextView quantityTextView = (TextView) findViewById(R.id.remaining_points);
+        TextView quantityTextView = findViewById(R.id.remaining_points);
         quantityTextView.setText(remainingPoints);
     }
 
@@ -63,25 +63,24 @@ public class MainActivity extends AppCompatActivity {
         boolean addMeldSuccess = player.addMeld();
         if (addMeldSuccess) {
             int scoreResId = getResources().getIdentifier(player.getPlayerScoreViewName(), "id", getPackageName());
-            TextView scoreTextView = (TextView) findViewById(scoreResId);
+            TextView scoreTextView = findViewById(scoreResId);
             scoreTextView.setText(player.getStringScore());
         } // TO do disable buttons
     }
 
     public void changeCardLayout(Player player, CardType cardType) {
         int cardResId = getResources().getIdentifier(player.getPlayerCardViewName(cardType), "id", getPackageName());
-        ImageView cardImageView = (ImageView) findViewById(cardResId);
+        ImageView cardImageView = findViewById(cardResId);
         Context context = cardImageView.getContext();
         if (player.isOneCardChosen()) {
-            String cardPicName = CardTypes.getInstance().getCardName(cardType) + "_of_clubs_black";
+            String cardPicName = Pile.getInstance().getCardName(cardType) + "_of_clubs_black";
             int blackCardPicId = context.getResources().getIdentifier(cardPicName, "drawable", context.getPackageName());
             cardImageView.setImageResource(blackCardPicId);
         } else {
             resetLayout(player);
             int scoreResId = getResources().getIdentifier(player.getPlayerScoreViewName(), "id", getPackageName());
-            TextView scoreTextView = (TextView) findViewById(scoreResId);
+            TextView scoreTextView = findViewById(scoreResId);
             scoreTextView.setText(player.getStringScore());
-            ;
         }
     }
 
@@ -227,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
                 player = player2;
             }
             if (player.isOneCardChosen()) {
-                CardTypes.getInstance().returnCardToPile(player.getChosenCard());
+                Pile.getInstance().returnCardToPile(player.getChosenCard());
                 player.resetOneCardChosen();
                 resetLayout(player);
             }

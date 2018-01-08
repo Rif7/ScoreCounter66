@@ -251,7 +251,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/remaining_points"
         android:layout_centerHorizontal="true"
-        android:text="@string/remaing_points"
+        android:text="@string/remaining_points"
         android:textAlignment="center" />
 
     <Button
