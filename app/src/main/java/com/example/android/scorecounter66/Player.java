@@ -3,12 +3,13 @@ package com.example.android.scorecounter66;
 
 class Player {
     private static boolean onePlayerClicked = false;
+
     private final String playerName;
+
     private boolean oneCardChosen;
     private int score;
     private int chosenCardPoints;
     private CardType chosenCard;
-
     Player(String playerName) {
         resetOneCardChosen();
         this.playerName = playerName;
@@ -23,6 +24,10 @@ class Player {
         return onePlayerClicked;
     }
 
+    String getPlayerName() {
+        return playerName;
+    }
+
     private void resetTempPoints() {
         this.chosenCardPoints = 0;
     }
@@ -33,6 +38,10 @@ class Player {
 
     CardType getChosenCard() {
         return chosenCard;
+    }
+
+    int getScore() {
+        return score;
     }
 
     String getStringScore() {

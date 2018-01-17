@@ -4,8 +4,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Player player1;
@@ -31,18 +33,25 @@ public class MainActivity extends AppCompatActivity {
         scoreTextView.setText(player.getStringScore());
     }
 
+    public void updatePlayersLayouts() {
+        updateLayout(player1);
+        updateLayout(player2);
+        updateRemainingPoints(Pile.getInstance().getStringLeftPoints());
+        updateButtonsViews();
+        toastWinner();
+    }
+
 
     public void reset(View view) {
         resetScorePlayer(player1);
         resetScorePlayer(player2);
         Player.resetOnePlayerClicked();
         Pile.getInstance().resetCards();
-        resetLayout(player1);
-        resetLayout(player2);
+        updatePlayersLayouts();
         updateRemainingPoints("120");
     }
 
-    public void resetLayout(Player player) {
+    public void updateLayout(Player player) {
         for (CardType cardType : CardType.values()) {
             int cardResId = getResources().getIdentifier(player.getPlayerCardViewName(cardType), "id", getPackageName());
             ImageView cardImageView = findViewById(cardResId);
@@ -50,7 +59,11 @@ public class MainActivity extends AppCompatActivity {
             String cardPicName = Pile.getInstance().getCardName(cardType) + "_of_clubs_white";
             int whiteCardPicId = context.getResources().getIdentifier(cardPicName, "drawable", context.getPackageName());
             cardImageView.setImageResource(whiteCardPicId);
-            updateRemainingPoints(Pile.getInstance().getStringLeftPoints());
+            if (Pile.getInstance().getCardLeft(cardType) > 0) {
+                cardImageView.setBackgroundColor(0x0000FF00);
+            } else {
+                cardImageView.setBackgroundColor(0xFF00FF00);
+            }
         }
     }
 
@@ -59,13 +72,46 @@ public class MainActivity extends AppCompatActivity {
         quantityTextView.setText(remainingPoints);
     }
 
+    public void updateButtonsViews() {
+        Button meldButton1 = (Button) findViewById(R.id.meld_Player1);
+        Button meldButton2 = (Button) findViewById(R.id.meld_Player2);
+        if (Pile.getInstance().isMeldLeft()) {
+            meldButton1.setText(R.string.meld_20);
+            meldButton2.setText(R.string.meld_20);
+        } else {
+            meldButton1.setText(R.string.no_melds);
+            meldButton2.setText(R.string.no_melds);
+        }
+    }
+
+    public Player checkVictoryConditions() {
+        if (player1.getScore() >= 66) {
+            return player1;
+        }
+        if (player2.getScore() >= 66) {
+            return player2;
+        }
+        return null;
+    }
+
+    public void toastWinner() {
+        Player winner = checkVictoryConditions();
+        if (winner != null) {
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    winner.getPlayerName() + " reached 66 points", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
+
     public void addMeldPoints(Player player) {
         boolean addMeldSuccess = player.addMeld();
         if (addMeldSuccess) {
             int scoreResId = getResources().getIdentifier(player.getPlayerScoreViewName(), "id", getPackageName());
             TextView scoreTextView = findViewById(scoreResId);
             scoreTextView.setText(player.getStringScore());
-        } // TO do disable buttons
+        }
+        updateButtonsViews();
+        toastWinner();
     }
 
     public void changeCardLayout(Player player, CardType cardType) {
@@ -75,9 +121,10 @@ public class MainActivity extends AppCompatActivity {
         if (player.isOneCardChosen()) {
             String cardPicName = Pile.getInstance().getCardName(cardType) + "_of_clubs_black";
             int blackCardPicId = context.getResources().getIdentifier(cardPicName, "drawable", context.getPackageName());
+            updatePlayersLayouts();
             cardImageView.setImageResource(blackCardPicId);
         } else {
-            resetLayout(player);
+            updatePlayersLayouts();
             int scoreResId = getResources().getIdentifier(player.getPlayerScoreViewName(), "id", getPackageName());
             TextView scoreTextView = findViewById(scoreResId);
             scoreTextView.setText(player.getStringScore());
@@ -228,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
             if (player.isOneCardChosen()) {
                 Pile.getInstance().returnCardToPile(player.getChosenCard());
                 player.resetOneCardChosen();
-                resetLayout(player);
+                updatePlayersLayouts();
             }
         }
     }

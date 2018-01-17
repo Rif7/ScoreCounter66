@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ccffcc"
     tools:context="com.example.android.scorecounter66.MainActivity">
 
     <LinearLayout
@@ -24,9 +25,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/me"
-                android:textColor="#616161"
-                android:textSize="14sp" />
+                android:text="@string/Player1"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/score_Player1"
@@ -36,8 +38,8 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/initNumber"
-                android:textColor="@android:color/black"
-                android:textSize="56sp" />
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="40sp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -110,6 +112,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:background="@android:color/holo_blue_light"
                 android:onClick="clickMeldPlayer1"
                 android:text="@string/meld_20" />
 
@@ -133,9 +137,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/you"
-                android:textColor="#616161"
-                android:textSize="14sp" />
+                android:text="@string/Player2"
+                android:textColor="@android:color/holo_purple"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/score_Player2"
@@ -145,8 +150,8 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/initNumber"
-                android:textColor="@android:color/black"
-                android:textSize="56sp" />
+                android:textColor="@android:color/holo_purple"
+                android:textSize="40sp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -219,8 +224,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:background="@android:color/holo_purple"
                 android:onClick="clickMeldPlayer2"
-                android:text="Meld +20" />
+                android:text="@string/meld_20" />
 
         </LinearLayout>
     </LinearLayout>
@@ -232,6 +239,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_margin="16dp"
+        android:background="@android:color/holo_red_dark"
         android:onClick="reset"
         android:text="@string/reset"
         android:textAllCaps="true" />
@@ -261,6 +269,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_margin="16dp"
+        android:background="@android:color/holo_orange_dark"
         android:onClick="undo"
         android:text="@string/undo"
         android:textAllCaps="true" />

@@ -33,7 +33,11 @@ class Pile {
         return cards.get(cardTypeToFind);
     }
 
-    private boolean isMeldLeft() {
+    int getCardLeft(CardType cardTypeToFind) {
+        return cards.get(cardTypeToFind).getLeftCards();
+    }
+
+    boolean isMeldLeft() {
         return leftMelds > 0;
     }
 
@@ -133,6 +137,10 @@ abstract class Card{
 
     void returnCardToPile() {
         leftCards++;
+    }
+
+    public int getLeftCards() {
+        return leftCards;
     }
 
     boolean validate() {
