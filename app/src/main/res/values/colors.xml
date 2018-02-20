@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="backgoundColor">#FFCCBC</color>
+    <color name="PlayerOneColor">#795548</color>
+    <color name="PlayerTwoColor">#616161</color>
+    <color name="resetColor">@android:color/holo_red_dark</color>
+    <color name="undoColor">@android:color/holo_orange_dark</color>
 </resources>

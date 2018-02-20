@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MeldButton" parent="Base.TextAppearance.AppCompat.Button">
+        <item name="android:alpha">0.75</item>
+    </style>
+
 </resources>

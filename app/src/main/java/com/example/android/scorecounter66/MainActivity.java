@@ -26,6 +26,12 @@ public class MainActivity extends AppCompatActivity {
         player2 = new Player(getResources().getString(R.string.Player2));
     }
 
+    public void updatePlayerScore(Player player) {
+        int scoreResId = getResources().getIdentifier(player.getPlayerScoreViewName(), "id", getPackageName());
+        TextView scoreTextView = findViewById(scoreResId);
+        scoreTextView.setText(player.getStringScore());
+    }
+
     public void resetScorePlayer(Player player) {
         int scoreResId = getResources().getIdentifier(player.getPlayerScoreViewName(), "id", getPackageName());
         player.resetScore();
@@ -36,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     public void updatePlayersLayouts() {
         updateLayout(player1);
         updateLayout(player2);
+        updatePlayerScore(player1);
+        updatePlayerScore(player2);
         updateRemainingPoints(Pile.getInstance().getStringLeftPoints());
         updateButtonsViews();
         toastWinner();
@@ -48,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         Player.resetOnePlayerClicked();
         Pile.getInstance().resetCards();
         updatePlayersLayouts();
-        updateRemainingPoints("120");
     }
 
     public void updateLayout(Player player) {
@@ -56,14 +63,16 @@ public class MainActivity extends AppCompatActivity {
             int cardResId = getResources().getIdentifier(player.getPlayerCardViewName(cardType), "id", getPackageName());
             ImageView cardImageView = findViewById(cardResId);
             Context context = cardImageView.getContext();
-            String cardPicName = Pile.getInstance().getCardName(cardType) + "_of_clubs_white";
-            int whiteCardPicId = context.getResources().getIdentifier(cardPicName, "drawable", context.getPackageName());
-            cardImageView.setImageResource(whiteCardPicId);
-            if (Pile.getInstance().getCardLeft(cardType) > 0) {
-                cardImageView.setBackgroundColor(0x0000FF00);
+            String cardPicName;
+            if (Pile.getInstance().getCardLeft(cardType) == 0) {
+                cardPicName = Pile.getInstance().getCardName(cardType) + "_of_clubs_red";
+            } else if (player.isOneCardChosen() && cardType == player.getChosenCard()) {
+                cardPicName = Pile.getInstance().getCardName(cardType) + "_of_clubs_black";
             } else {
-                cardImageView.setBackgroundColor(0xFF00FF00);
+                cardPicName = Pile.getInstance().getCardName(cardType) + "_of_clubs_white";
             }
+            int cardPicId = context.getResources().getIdentifier(cardPicName, "drawable", context.getPackageName());
+            cardImageView.setImageResource(cardPicId);
         }
     }
 
@@ -73,8 +82,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateButtonsViews() {
-        Button meldButton1 = (Button) findViewById(R.id.meld_Player1);
-        Button meldButton2 = (Button) findViewById(R.id.meld_Player2);
+        Button meldButton1 = findViewById(R.id.meld_Player1);
+        Button meldButton2 = findViewById(R.id.meld_Player2);
         if (Pile.getInstance().isMeldLeft()) {
             meldButton1.setText(R.string.meld_20);
             meldButton2.setText(R.string.meld_20);
@@ -114,22 +123,6 @@ public class MainActivity extends AppCompatActivity {
         toastWinner();
     }
 
-    public void changeCardLayout(Player player, CardType cardType) {
-        int cardResId = getResources().getIdentifier(player.getPlayerCardViewName(cardType), "id", getPackageName());
-        ImageView cardImageView = findViewById(cardResId);
-        Context context = cardImageView.getContext();
-        if (player.isOneCardChosen()) {
-            String cardPicName = Pile.getInstance().getCardName(cardType) + "_of_clubs_black";
-            int blackCardPicId = context.getResources().getIdentifier(cardPicName, "drawable", context.getPackageName());
-            updatePlayersLayouts();
-            cardImageView.setImageResource(blackCardPicId);
-        } else {
-            updatePlayersLayouts();
-            int scoreResId = getResources().getIdentifier(player.getPlayerScoreViewName(), "id", getPackageName());
-            TextView scoreTextView = findViewById(scoreResId);
-            scoreTextView.setText(player.getStringScore());
-        }
-    }
 
     public void clickAcePlayer1(View view) {
         Player player = player1;
@@ -137,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
         boolean addCardSuccess = player.addCard(cardType);
         if (addCardSuccess) {
-            changeCardLayout(player, cardType);
+            updatePlayersLayouts();
         }
     }
 
@@ -147,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
         boolean addCardSuccess = player.addCard(cardType);
         if (addCardSuccess) {
-            changeCardLayout(player, cardType);
+            updatePlayersLayouts();
         }
     }
 
@@ -157,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
         boolean addCardSuccess = player.addCard(cardType);
         if (addCardSuccess) {
-            changeCardLayout(player, cardType);
+            updatePlayersLayouts();
         }
     }
 
@@ -167,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
 
         boolean addCardSuccess = player.addCard(cardType);
         if (addCardSuccess) {
-            changeCardLayout(player, cardType);
+            updatePlayersLayouts();
         }
     }
 
@@ -177,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
 
         boolean addCardSuccess = player.addCard(cardType);
         if (addCardSuccess) {
-            changeCardLayout(player, cardType);
+            updatePlayersLayouts();
         }
     }
 
@@ -187,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
 
         boolean addCardSuccess = player.addCard(cardType);
         if (addCardSuccess) {
-            changeCardLayout(player, cardType);
+            updatePlayersLayouts();
         }
     }
 
@@ -204,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
 
         boolean addCardSuccess = player.addCard(cardType);
         if (addCardSuccess) {
-            changeCardLayout(player, cardType);
+            updatePlayersLayouts();
         }
     }
 
@@ -214,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
 
         boolean addCardSuccess = player.addCard(cardType);
         if (addCardSuccess) {
-            changeCardLayout(player, cardType);
+            updatePlayersLayouts();
         }
     }
 
@@ -224,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
 
         boolean addCardSuccess = player.addCard(cardType);
         if (addCardSuccess) {
-            changeCardLayout(player, cardType);
+            updatePlayersLayouts();
         }
     }
 
@@ -234,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
 
         boolean addCardSuccess = player.addCard(cardType);
         if (addCardSuccess) {
-            changeCardLayout(player, cardType);
+            updatePlayersLayouts();
         }
     }
 
@@ -244,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
 
         boolean addCardSuccess = player.addCard(cardType);
         if (addCardSuccess) {
-            changeCardLayout(player, cardType);
+            updatePlayersLayouts();
         }
     }
 
@@ -254,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
 
         boolean addCardSuccess = player.addCard(cardType);
         if (addCardSuccess) {
-            changeCardLayout(player, cardType);
+            updatePlayersLayouts();
         }
     }
 

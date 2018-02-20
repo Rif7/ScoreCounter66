@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ccffcc"
+    android:background="@color/backgoundColor"
     tools:context="com.example.android.scorecounter66.MainActivity">
 
     <LinearLayout
@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/Player1"
-                android:textColor="@android:color/holo_blue_light"
+                android:textColor="@color/PlayerOneColor"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -38,7 +38,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/initNumber"
-                android:textColor="@android:color/holo_blue_light"
+                android:textColor="@color/PlayerOneColor"
                 android:textSize="40sp" />
 
             <LinearLayout
@@ -109,11 +109,12 @@
 
             <Button
                 android:id="@+id/meld_Player1"
+                style="@style/MeldButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
-                android:background="@android:color/holo_blue_light"
+                android:background="@color/PlayerOneColor"
                 android:onClick="clickMeldPlayer1"
                 android:text="@string/meld_20" />
 
@@ -138,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/Player2"
-                android:textColor="@android:color/holo_purple"
+                android:textColor="@color/PlayerTwoColor"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -150,7 +151,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/initNumber"
-                android:textColor="@android:color/holo_purple"
+                android:textColor="@color/PlayerTwoColor"
                 android:textSize="40sp" />
 
             <LinearLayout
@@ -221,11 +222,12 @@
 
             <Button
                 android:id="@+id/meld_Player2"
+                style="@style/MeldButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
-                android:background="@android:color/holo_purple"
+                android:background="@color/PlayerTwoColor"
                 android:onClick="clickMeldPlayer2"
                 android:text="@string/meld_20" />
 
@@ -239,7 +241,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_margin="16dp"
-        android:background="@android:color/holo_red_dark"
+        android:background="@color/resetColor"
         android:onClick="reset"
         android:text="@string/reset"
         android:textAllCaps="true" />
@@ -269,7 +271,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_margin="16dp"
-        android:background="@android:color/holo_orange_dark"
+        android:background="@color/undoColor"
         android:onClick="undo"
         android:text="@string/undo"
         android:textAllCaps="true" />
