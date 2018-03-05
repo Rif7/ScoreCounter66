@@ -265,6 +265,7 @@
         android:textAlignment="center" />
 
     <Button
+        android:id="@+id/undo_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -274,7 +275,8 @@
         android:background="@color/undoColor"
         android:onClick="undo"
         android:text="@string/undo"
-        android:textAllCaps="true" />
+        android:textAllCaps="true"
+        android:visibility="invisible" />
 
 </RelativeLayout>
 

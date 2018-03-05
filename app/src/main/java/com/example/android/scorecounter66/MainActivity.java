@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         toastWinner();
     }
 
-
     public void reset(View view) {
         resetScorePlayer(player1);
         resetScorePlayer(player2);
@@ -90,6 +89,13 @@ public class MainActivity extends AppCompatActivity {
         } else {
             meldButton1.setText(R.string.no_melds);
             meldButton2.setText(R.string.no_melds);
+        }
+
+        Button undoButton = findViewById(R.id.undo_button);
+        if (Player.isOnePlayerClicked()) {
+            undoButton.setVisibility(View.VISIBLE);
+        } else {
+            undoButton.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -186,7 +192,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickMeldPlayer1(View view) {
         Player player = player1;
-
         addMeldPoints(player);
     }
 
@@ -253,7 +258,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickMeldPlayer2(View view) {
         Player player = player2;
-
         addMeldPoints(player);
     }
 
