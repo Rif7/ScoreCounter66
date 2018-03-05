@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
     public void updateLayout(Player player) {
         for (CardType cardType : CardType.values()) {
             int cardResId = getResources().getIdentifier(player.getPlayerCardViewName(cardType), "id", getPackageName());
-            ImageView cardImageView = findViewById(cardResId);
-            Context context = cardImageView.getContext();
+            Button buttonView = findViewById(cardResId);
+            Context context = buttonView.getContext();
             String cardPicName;
             if (Pile.getInstance().getCardLeft(cardType) == 0) {
                 cardPicName = Pile.getInstance().getCardName(cardType) + "_of_clubs_red";
@@ -71,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 cardPicName = Pile.getInstance().getCardName(cardType) + "_of_clubs_white";
             }
             int cardPicId = context.getResources().getIdentifier(cardPicName, "drawable", context.getPackageName());
-            cardImageView.setImageResource(cardPicId);
+            buttonView.setBackgroundResource(cardPicId);
         }
     }
 

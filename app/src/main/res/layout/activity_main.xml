@@ -45,21 +45,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="60dp">
 
-                <ImageView
+                <Button
                     android:id="@+id/ace_Player1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:onClick="clickAcePlayer1"
-                    android:src="@drawable/ace_of_clubs_white" />
+                    android:background="@drawable/ace_of_clubs_white"
+                    android:onClick="clickAcePlayer1" />
 
-                <ImageView
+                <Button
                     android:id="@+id/teen_Player1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:onClick="clickTeenPlayer1"
-                    android:src="@drawable/teen_of_clubs_white" />
+                    android:background="@drawable/teen_of_clubs_white"
+                    android:onClick="clickTeenPlayer1" />
 
             </LinearLayout>
 
@@ -67,21 +67,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="60dp">
 
-                <ImageView
+                <Button
                     android:id="@+id/king_Player1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:onClick="clickKingPlayer1"
-                    android:src="@drawable/king_of_clubs_white" />
+                    android:background="@drawable/king_of_clubs_white"
+                    android:onClick="clickKingPlayer1" />
 
-                <ImageView
+                <Button
                     android:id="@+id/queen_Player1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:onClick="clickQueenPlayer1"
-                    android:src="@drawable/queen_of_clubs_white" />
+                    android:background="@drawable/queen_of_clubs_white"
+                    android:onClick="clickQueenPlayer1" />
 
             </LinearLayout>
 
@@ -89,21 +89,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="60dp">
 
-                <ImageView
+                <Button
                     android:id="@+id/jack_Player1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:onClick="clickJackPlayer1"
-                    android:src="@drawable/jack_of_clubs_white" />
+                    android:background="@drawable/jack_of_clubs_white"
+                    android:onClick="clickJackPlayer1" />
 
-                <ImageView
+                <Button
                     android:id="@+id/nine_Player1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:onClick="clickNinePlayer1"
-                    android:src="@drawable/nine_of_clubs_white" />
+                    android:background="@drawable/nine_of_clubs_white"
+                    android:onClick="clickNinePlayer1" />
 
             </LinearLayout>
 
@@ -158,21 +158,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="60dp">
 
-                <ImageView
+                <Button
                     android:id="@+id/ace_Player2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:onClick="clickAcePlayer2"
-                    android:src="@drawable/ace_of_clubs_white" />
+                    android:background="@drawable/ace_of_clubs_white"
+                    android:onClick="clickAcePlayer2" />
 
-                <ImageView
+                <Button
                     android:id="@+id/teen_Player2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:onClick="clickTeenPlayer2"
-                    android:src="@drawable/teen_of_clubs_white" />
+                    android:background="@drawable/teen_of_clubs_white"
+                    android:onClick="clickTeenPlayer2" />
 
             </LinearLayout>
 
@@ -180,21 +180,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="60dp">
 
-                <ImageView
+                <Button
                     android:id="@+id/king_Player2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:onClick="clickKingPlayer2"
-                    android:src="@drawable/king_of_clubs_white" />
+                    android:background="@drawable/king_of_clubs_white"
+                    android:onClick="clickKingPlayer2" />
 
-                <ImageView
+                <Button
                     android:id="@+id/queen_Player2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:onClick="clickQueenPlayer2"
-                    android:src="@drawable/queen_of_clubs_white" />
+                    android:background="@drawable/queen_of_clubs_white"
+                    android:onClick="clickQueenPlayer2" />
 
             </LinearLayout>
 
@@ -202,21 +202,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="60dp">
 
-                <ImageView
+                <Button
                     android:id="@+id/jack_Player2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:onClick="clickJackPlayer2"
-                    android:src="@drawable/jack_of_clubs_white" />
+                    android:background="@drawable/jack_of_clubs_white"
+                    android:onClick="clickJackPlayer2" />
 
-                <ImageView
+                <Button
                     android:id="@+id/nine_Player2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:onClick="clickNinePlayer2"
-                    android:src="@drawable/nine_of_clubs_white" />
+                    android:background="@drawable/nine_of_clubs_white"
+                    android:onClick="clickNinePlayer2" />
 
             </LinearLayout>
 
