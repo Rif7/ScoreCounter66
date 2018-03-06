@@ -10,10 +10,33 @@
 
     <style name="MeldButton" parent="Base.TextAppearance.AppCompat.Button">
         <item name="android:alpha">0.75</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">8dp</item>
     </style>
 
-    <style name="PlayerName" parent="Base.TextAppearance.AppCompat.Button">
-        <item name="android:alpha">0.75</item>
+    <style name="PlayerName" parent="TextAppearance.AppCompat">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="PlayerScore" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">40sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <style name="Card" parent="Base.TextAppearance.AppCompat.Button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
     </style>
 
 </resources>

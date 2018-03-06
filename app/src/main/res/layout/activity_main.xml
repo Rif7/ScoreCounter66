@@ -22,24 +22,15 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/PlayerName"
                 android:text="@string/Player1"
-                android:textColor="@color/PlayerOneColor"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textColor="@color/PlayerOneColor" />
 
             <TextView
                 android:id="@+id/score_Player1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
+                style="@style/PlayerScore"
                 android:text="@string/initNumber"
-                android:textColor="@color/PlayerOneColor"
-                android:textSize="40sp" />
+                android:textColor="@color/PlayerOneColor" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -47,17 +38,13 @@
 
                 <Button
                     android:id="@+id/ace_Player1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    style="@style/Card"
                     android:background="@drawable/ace_of_clubs_white"
                     android:onClick="clickAcePlayer1" />
 
                 <Button
                     android:id="@+id/teen_Player1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    style="@style/Card"
                     android:background="@drawable/teen_of_clubs_white"
                     android:onClick="clickTeenPlayer1" />
 
@@ -69,17 +56,13 @@
 
                 <Button
                     android:id="@+id/king_Player1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    style="@style/Card"
                     android:background="@drawable/king_of_clubs_white"
                     android:onClick="clickKingPlayer1" />
 
                 <Button
                     android:id="@+id/queen_Player1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    style="@style/Card"
                     android:background="@drawable/queen_of_clubs_white"
                     android:onClick="clickQueenPlayer1" />
 
@@ -91,17 +74,13 @@
 
                 <Button
                     android:id="@+id/jack_Player1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    style="@style/Card"
                     android:background="@drawable/jack_of_clubs_white"
                     android:onClick="clickJackPlayer1" />
 
                 <Button
                     android:id="@+id/nine_Player1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    style="@style/Card"
                     android:background="@drawable/nine_of_clubs_white"
                     android:onClick="clickNinePlayer1" />
 
@@ -110,10 +89,6 @@
             <Button
                 android:id="@+id/meld_Player1"
                 style="@style/MeldButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="8dp"
                 android:background="@color/PlayerOneColor"
                 android:onClick="clickMeldPlayer1"
                 android:text="@string/meld_20" />
@@ -135,24 +110,15 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/PlayerName"
                 android:text="@string/Player2"
-                android:textColor="@color/PlayerTwoColor"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textColor="@color/PlayerTwoColor" />
 
             <TextView
                 android:id="@+id/score_Player2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
+                style="@style/PlayerScore"
                 android:text="@string/initNumber"
-                android:textColor="@color/PlayerTwoColor"
-                android:textSize="40sp" />
+                android:textColor="@color/PlayerTwoColor" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -160,17 +126,13 @@
 
                 <Button
                     android:id="@+id/ace_Player2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    style="@style/Card"
                     android:background="@drawable/ace_of_clubs_white"
                     android:onClick="clickAcePlayer2" />
 
                 <Button
                     android:id="@+id/teen_Player2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    style="@style/Card"
                     android:background="@drawable/teen_of_clubs_white"
                     android:onClick="clickTeenPlayer2" />
 
@@ -182,17 +144,13 @@
 
                 <Button
                     android:id="@+id/king_Player2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    style="@style/Card"
                     android:background="@drawable/king_of_clubs_white"
                     android:onClick="clickKingPlayer2" />
 
                 <Button
                     android:id="@+id/queen_Player2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    style="@style/Card"
                     android:background="@drawable/queen_of_clubs_white"
                     android:onClick="clickQueenPlayer2" />
 
@@ -204,17 +162,13 @@
 
                 <Button
                     android:id="@+id/jack_Player2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    style="@style/Card"
                     android:background="@drawable/jack_of_clubs_white"
                     android:onClick="clickJackPlayer2" />
 
                 <Button
                     android:id="@+id/nine_Player2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    style="@style/Card"
                     android:background="@drawable/nine_of_clubs_white"
                     android:onClick="clickNinePlayer2" />
 
@@ -223,10 +177,6 @@
             <Button
                 android:id="@+id/meld_Player2"
                 style="@style/MeldButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="8dp"
                 android:background="@color/PlayerTwoColor"
                 android:onClick="clickMeldPlayer2"
                 android:text="@string/meld_20" />
